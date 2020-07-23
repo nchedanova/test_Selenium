@@ -16,9 +16,10 @@ public class MainClass {
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         // прописываем путь к chromedriver и geckodriver (firefox)
 
+
         //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
 
-        driver = new FirefoxDriver();
+        driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
