@@ -25,29 +25,60 @@ public class MainClass {
 
         //TODO работа с чекбоксами и радиокнопками
 
-       driver.get("https://market.yandex.ru/");
+        driver.get("https://tykwa-food.ru/");
+//
+//        WebElement checkbox = driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']"));
+//        if (driver.findElement(By.xpath("//a[text()='Мужская']")).isDisplayed())
+//            driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']")).click();
+//
+//        WebElement checkbox1 = driver.findElement(By.xpath("//a[@id='bx_2662763187_7671_buy_link']"));
+//        if (driver.findElement(By.xpath("//a[text()='4 сыра ']")).isDisplayed())
+//            driver.findElement(By.xpath("//a[@id='bx_2662763187_7671_buy_link']")).click();
+//
+//        WebElement checkbox2 = driver.findElement(By.xpath("//a[@id='bx_2662763187_7784_buy_link']"));
+//        if (driver.findElement(By.xpath("//a[text()='Мисо суп']")).isDisplayed())
+//            driver.findElement(By.xpath("//a[@id='bx_2662763187_7784_buy_link']")).click();
+//
 
- //       driver.get("https://market.yandex.ru/catalog--stiralnye-mashiny/16673392/list?hid=90566&onstock=1");
+        selectFood("Мужская");
+        selectFood("4 сыра ");
+        selectFood("Ветчина и сыр");
 
-     //   WebElement fuckingButton = driver.findElement(By.xpath("//span[text()='Да, спасибо']"));
-        if (driver.findElement(By.xpath("//span[text()='Да, спасибо']")).isDisplayed())
-            driver.findElement(By.xpath("//span[text()='Да, спасибо']")).click();
+        WebElement basket = driver.findElement(By.xpath("//a[@id='bx_basketT0kNhm']"));
+        basket.click();
+        //checkbox.click();
 
-        WebElement selectCategory = driver.findElement(By.xpath("//span[text()='Бытовая техника']"));
-    //    WebElement selectWashMachine = driver.findElement(By.xpath("//div/a[text()='Стиральные машины']"));
-     //   WebElement sortByAtlant = driver.findElement(By.xpath("//span[text()='ATLANT']//parent::div"));
+//        driver.get("https://myrusakov.ru/css3-custom-checkbox.html");
+//
+//           WebElement checkbox = driver.findElement(By.xpath("//body/label/span[@class='checkmark']"));
+//        if (driver.findElement(By.xpath("//body/label/span[@class='checkmark']")).isDisplayed())
+//            driver.findElement(By.xpath("//body/label/span[@class='checkmark']")).click();
+//        checkbox.click();
+
+
+//       driver.get("https://market.yandex.ru/");
+
+        //       driver.get("https://market.yandex.ru/catalog--stiralnye-mashiny/16673392/list?hid=90566&onstock=1");
+
+        //   WebElement fuckingButton = driver.findElement(By.xpath("//span[text()='Да, спасибо']"));
+//        if (driver.findElement(By.xpath("//span[text()='Да, спасибо']")).isDisplayed())
+//            driver.findElement(By.xpath("//span[text()='Да, спасибо']")).click();
+//
+//        WebElement selectCategory = driver.findElement(By.xpath("//span[text()='Бытовая техника']"));
+        //    WebElement selectWashMachine = driver.findElement(By.xpath("//div/a[text()='Стиральные машины']"));
+        //   WebElement sortByAtlant = driver.findElement(By.xpath("//span[text()='ATLANT']//parent::div"));
 
 
 //        fuckingButton.isDisplayed();
 //        fuckingButton.click();
-        selectCategory.click();
-
-        selectCheckbox("ATLANT");
-        selectCheckbox("Candy");
+//        selectCategory.click();
+//
+//        selectCheckbox("ATLANT");
+//        selectCheckbox("Candy");
 //        if (selectWashMachine.isDisplayed())
 //             selectWashMachine.click();
 
-     //   sortByAtlant.click();
+        //   sortByAtlant.click();
 
 //        driver.get("https://en.wikipedia.org/wiki/Main_Page");
 //        WebElement link = driver.findElement(By.xpath("//li[@id='n-aboutsite']/a"));
@@ -134,6 +165,14 @@ public class MainClass {
         String nameOfCheckbox = "//span[text()='%s']//parent::div";
         if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
             driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
+
+    }
+
+    public static void selectFood(String name) {
+        String nameOfCheckbox = "//a[text()='%s']";
+        if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
+            driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']")).click();
+      //      driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
 
     }
 }
