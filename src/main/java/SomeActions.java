@@ -1,6 +1,5 @@
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
@@ -13,103 +12,106 @@ import java.util.concurrent.TimeUnit;
 
 public class SomeActions {
     static WebDriver driver;
-    private String cut;
 
     public static void main(String[] args) {
 
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         // прописываем путь к chromedriver и geckodriver (firefox)
-
-
         //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
 
-//        driver = new ChromeDriver();
         driver = new FirefoxDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        driver.get("https://ru.ebay.com/");
-//TODO Javascript
-
-//        JavascriptExecutor jse = (JavascriptExecutor) driver;
-//        jse.executeScript("alert('Good morning');");
-//        jse.executeScript("window.scrollBy(0, 2000)", "");
-//        jse.executeScript("window.scrollBy(0, -1500)", "");
+        //     driver.manage().window().maximize();
 
 
-//        driver.get("https://ru.ebay.com/");
-//        jse.executeScript("alert('Good morning');");
-//        try {
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        driver.switchTo().alert().accept();
-//        jse.executeScript("confirm('Good morning');");
-//        try {
-//            Thread.sleep(3000);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-//        driver.switchTo().alert().dismiss();
-//        WebElement link = driver.findElement(By.xpath("//li[@class='hl-cat-nav__js-tab']//a[text()='Электроника']"));
-//        WebElement element = driver.findElement(By.xpath("//li[@class='hl-cat-nav__js-tab']//a[text()='Электроника']"));
-//
-//        Actions actions = new Actions(driver);
-//
-//        actions.moveToElement(link).build().perform();
+        JavascriptExecutor jse = (JavascriptExecutor) driver;
+//        jse.executeScript("window.scrollBy(0, 1000)", ""); // откроет страницу и проскроллит её вниз на 1000px
+//        jse.executeScript("window.scrollBy(0, -500)", ""); // откроет страницу и проскроллит её вверх на 500px
 
-//        actions.dragAndDrop(element, link).build().perform();
-//
-//        actions.clickAndHold(element).moveToElement(link).build().perform();
-//
-//        actions.doubleClick(element);
-//        actions.contextClick(element);
-//        Action action = actions.clickAndHold(element).moveToElement(link).release().build();
-//
-//        action.perform();
+        driver.get("https://www.ebay.com/");
 
-        WebElement link1 = driver.findElement(By.xpath("//a[text()='Samsung']"));
-        WebElement link2 = driver.findElement(By.xpath("//li/a[text()='Мода']"));
+        //TODO виден ли элемент на странице (isDisplayed)
+        WebElement hiddenLink = driver.findElement(By.xpath("//a[text()='Бижутерия']"));
+        WebElement availableLink = driver.findElement(By.xpath("//li/a[text()='Красота и здоровье']"));
 
-        System.out.println(link1.isDisplayed());
-        System.out.println(link2.isDisplayed());
-        if(link1.isDisplayed()) link1.click();
-        else link2.click();
+        System.out.println("This link is available now: " + hiddenLink.isDisplayed());
+        System.out.println("This link is available now: " + availableLink.isDisplayed());
+        System.out.println("This link is available now: " + availableLink.isDisplayed());
 
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        // if (availableLink.equals(driver.findElement(By.xpath("")))) System.out.println("error");
+
+        if (hiddenLink.isDisplayed()) hiddenLink.click();
+        else availableLink.click();
 
         WebElement searchInput = driver.findElement(By.xpath("//input[@id='gh-ac']"));
-        String select = Keys.chord(Keys.CONTROL, "a");
-        String cut = Keys.chord(Keys.CONTROL, "x");
-        String paste = Keys.chord(Keys.CONTROL,"v");
-        searchInput.sendKeys("Шорты");
+
+        String select = Keys.chord(Keys.CONTROL, "a"); //ctrl+a выделить
+        String cut = Keys.chord(Keys.CONTROL, "x"); //ctrl+x вырезать
+        String paste = Keys.chord(Keys.CONTROL, "v"); //ctrl+v вставить
+
+        searchInput.sendKeys("Гель для лица");
+        searchInput.sendKeys(Keys.ENTER);
+
         searchInput.sendKeys(select);
         searchInput.sendKeys(cut);
-        searchInput.sendKeys(Keys.chord(Keys.SHIFT, "шорты")); //написать заглавными
+
+        searchInput.sendKeys(Keys.chord(Keys.SHIFT, "гель для лица")); //написать всё сообщение заглавными буквами
         searchInput.sendKeys(Keys.ENTER);
+
+        //TODO сделать скриншот
 
         Date dateNow = new Date();
         SimpleDateFormat format = new SimpleDateFormat("hh_mm_ss");
         String fileName = format.format(dateNow) + ".png";
 
-        File screenshot = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE); //силениум сделает скриншот
+        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
         try {
-            FileUtils.copyFile(screenshot,new File("C:\\Users\\raube\\OneDrive\\Рабочий стол\\" + fileName));
+            FileUtils.copyFile(screenshot, new File("C:\\Users\\1\\Desktop\\" + fileName));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-
         driver.quit();
 
+        //TODO немного JavaScript
+//        jse.executeScript("alert('This is alert wrote in JS');"); // откроет браузер и выведет сообщение с этим текстом
+//        try {
+//            Thread.sleep(3000); //написать эту строку, потом добавить try/catch. Ждёт 3 секунды
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        driver.switchTo().alert().accept(); //в открывшемся алерт окне нажать "принять"
+//
+//        jse.executeScript("confirm('This is alert wrote in JS');"); // окно с опциями да или отмена
+//
+//        try {
+//            Thread.sleep(3000); //написать эту строку, потом добавить try/catch. Ждёт 3 секунды
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//
+//        driver.switchTo().alert().dismiss(); //в открывшемся окне подтвержения нажать "отклонить"
 
-
-
-
+//        driver.get("https://www.ebay.com/");
+//
+//        WebElement link = driver.findElement(By.xpath("//li[@class='hl-cat-nav__js-tab']//a[text()='Электроника']"));
+//        WebElement element = driver.findElement(By.xpath("//li[@class='hl-cat-nav__js-tab']//a[text()='Электроника']"));
+//
+//        Actions actions = new Actions(driver);
+//
+//        actions.moveToElement(link).build().perform(); //навестись на элемент не кликая на него
+//
+//        actions.dragAndDrop(element, link).build().perform(); // перетащить из одного окна в другое
+//
+//        actions.clickAndHold(element).moveToElement(link).release().build().perform(); // навестись и держать кнопку нажатой, перенести к другому окну и отпустить
+//
+//        actions.doubleClick(element); // двойной клик
+//        actions.contextClick(element); //клик правой кнопкой мыши
+//
+//        Action action = actions.clickAndHold(element).moveToElement(link).release().build();
+//        action.perform();
     }
 }
