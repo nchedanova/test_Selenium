@@ -12,20 +12,22 @@ public class MainClass {
 
     public static void main(String[] args) {
 
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
-        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
-        // прописываем путь к chromedriver и geckodriver (firefox)
-
-
-        //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
-
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-
-        //TODO работа с чекбоксами и радиокнопками
-
-        driver.get("https://tykwa-food.ru/");
+//        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
+//        System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
+//        // прописываем путь к chromedriver и geckodriver (firefox)
+//
+//
+//        //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
+//
+//        driver = new FirefoxDriver();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.manage().window().maximize();
+//
+//        //TODO работа с чекбоксами и радиокнопками
+//
+////        driver.get("https://tykwa-food.ru/");
+//        driver.get("https://balashiha.palki-skalki.ru/");
+//        driver.findElement(By.xpath("//button[text()='Еще']")).click();
 //
 //        WebElement checkbox = driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']"));
 //        if (driver.findElement(By.xpath("//a[text()='Мужская']")).isDisplayed())
@@ -40,12 +42,12 @@ public class MainClass {
 //            driver.findElement(By.xpath("//a[@id='bx_2662763187_7784_buy_link']")).click();
 //
 
-        selectFood("Мужская");
-        selectFood("4 сыра ");
-        selectFood("Ветчина и сыр");
-
-        WebElement basket = driver.findElement(By.xpath("//a[@id='bx_basketT0kNhm']"));
-        basket.click();
+//        selectFood("Мужская");
+//        selectFood("4 сыра ");
+//        selectFood("Ветчина и сыр");
+//
+//        WebElement basket = driver.findElement(By.xpath("//a[@id='bx_basketT0kNhm']"));
+//        basket.click();
         //checkbox.click();
 
 //        driver.get("https://myrusakov.ru/css3-custom-checkbox.html");
@@ -85,7 +87,7 @@ public class MainClass {
 //        System.out.println(link.getText());
 //        link.click();
 //
-//        driver.get("https://github.com/");
+//        driver.get("https:// github.com/");
 //        WebElement git = driver.findElement(By.xpath("//nav[@class='mt-0 px-3 px-lg-0 mb-5 mb-lg-0']/ul/li/a[text()='Team']"));     //li[@class='border-bottom border-lg-bottom-0 mr-0 mr-lg-3']/a[text()='Team']
 //        System.out.println(git.getText());
 //        git.click();
@@ -161,18 +163,17 @@ public class MainClass {
 //        driver1.get("https://www.google.com/");
     }
 
-    public static void selectCheckbox(String name) {
-        String nameOfCheckbox = "//span[text()='%s']//parent::div";
-        if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
-            driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
-
-    }
-
-    public static void selectFood(String name) {
-        String nameOfCheckbox = "//a[text()='%s']";
-        if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
-            driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']")).click();
-      //      driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
-
-    }
+//    public static void selectCheckbox(String name) {
+//        String nameOfCheckbox = "//span[text()='%s']//parent::div";
+//        if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
+//            driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
+//
+//    }
+//
+//    public static void selectFood(String name) {
+//        String nameOfCheckbox = "//a[text()='%s']";
+//        if (!driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).isSelected())
+//            driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']")).click();
+//            driver.findElement(By.xpath(String.format(nameOfCheckbox, name))).click();
+//    }
 }
