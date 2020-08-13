@@ -34,10 +34,11 @@ public class Cats {
         else System.out.println("Not ok");
 
         try {
-            Thread.sleep(2000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
 
         actions.moveToElement(cat1).build().perform();
         if (cat1.equals(driver.findElement(By.xpath("(//div[@class='card custom js_size_flipper'])[3]"))))
