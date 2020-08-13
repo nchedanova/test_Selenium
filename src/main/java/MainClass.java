@@ -107,9 +107,9 @@ public class MainClass {
 //        WebElement password = driver.findElement(By.xpath("//input [@id='user[password]']"));
 //        WebElement button = driver.findElement(By.xpath("//form[starts-with(@class, 'home-hero-signup text-gray-dark')]//button[contains(text(), 'Sign up for GitHub')]"));
 //
-//        username.sendKeys("nchedanova");
-//        email.sendKeys("chedanova21@gmail.com");
-//        password.sendKeys("kvokka26rnana");
+//        username.sendKeys("");
+//        email.sendKeys("");
+//        password.sendKeys("");
 //        button.submit();
 
 
