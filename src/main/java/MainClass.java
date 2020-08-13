@@ -15,17 +15,19 @@ public class MainClass {
         System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver.exe");
         // прописываем путь к chromedriver и geckodriver (firefox)
-
-
-        //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
-
-        driver = new FirefoxDriver();
-        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
+//
+//
+//        //  System.setProperty("webdriver.gecko.driver", "C:\\Users\\1\\IdeaProjects\\testselenium\\src\\main\\resources\\geckodriver.exe");
+//
+//        driver = new ChromeDriver();
+//        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+//        driver.manage().window().maximize();
 
         //TODO работа с чекбоксами и радиокнопками
 
-        driver.get("https://tykwa-food.ru/");
+//        driver.get("https://tykwa-food.ru/");
+//        driver.get("https://balashiha.palki-skalki.ru");
+//        driver.findElement(By.xpath("//button[text()='Еще']")).click();
 //
 //        WebElement checkbox = driver.findElement(By.xpath("//a[@id='bx_2662763187_7969_buy_link']"));
 //        if (driver.findElement(By.xpath("//a[text()='Мужская']")).isDisplayed())
@@ -40,12 +42,12 @@ public class MainClass {
 //            driver.findElement(By.xpath("//a[@id='bx_2662763187_7784_buy_link']")).click();
 //
 
-        selectFood("Мужская");
-        selectFood("4 сыра ");
-        selectFood("Ветчина и сыр");
-
-        WebElement basket = driver.findElement(By.xpath("//a[@id='bx_basketT0kNhm']"));
-        basket.click();
+//        selectFood("Мужская");
+//        selectFood("4 сыра ");
+//        selectFood("Ветчина и сыр");
+//
+//        WebElement basket = driver.findElement(By.xpath("//a[@id='bx_basketT0kNhm']"));
+//        basket.click();
         //checkbox.click();
 
 //        driver.get("https://myrusakov.ru/css3-custom-checkbox.html");
